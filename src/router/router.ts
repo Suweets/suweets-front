@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router";
-import Main from "../components/Header/Header.tsx";
-import Testchildren from "../pages/Testchildren.tsx";
+import Header from "../components/Header/Header.tsx";
+import Main from "../pages/Main.tsx";
 
 const router = createBrowserRouter([
   {
-    Component: Main,
-    children: [{ path: "/", Component: Testchildren }],
+    Component: Header,
+    children: [{ path: "/", Component: Main }],
   },
 ]);
 

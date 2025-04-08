@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap");
 @import "tailwindcss";
 
+* {
+  box-sizing: border-box;
+}
+
 @theme {
   --font-pacifico: "Pacifico", cursive;
   --font-poppins: "Poppins", sans-serif;
@@ -18,6 +22,9 @@
   --color-pastel-pink: #f4c2c2;
   --color-vanilla-yellow: #f9e2af;
   --color-base-gray: #766a63;
+
+  --breakpoint-desktop: 1500px;
+  --shadow-buttonShadow: 0px 4px 0px 0px #ac5932;
 }
 
 * {
