@@ -5,6 +5,15 @@
   box-sizing: border-box;
 }
 
+img{
+  image-rendering: smooth;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 @theme {
   --font-pacifico: "Pacifico", cursive;
   --font-poppins: "Poppins", sans-serif;
@@ -25,7 +34,20 @@
 
   --breakpoint-desktop: 1500px;
   --shadow-buttonShadow: 0px 4px 0px 0px #ac5932;
+  --shadow-headerShadow: 0px 4px 0px 0px var(--color-base-gray, #766a63);
+  --background-heroGradient: linear-gradient(180deg, rgba(216, 138, 82, 0.47) 0%, rgba(195, 93, 46, 0.00) 97.6%);
+  --shadow-buttonSecondary: 0px 4px 0px 0px #5E2C15;
+
+
+
 }
+
+@layer utilities {
+  .bg-hero-gradient {
+    background: var(--background-heroGradient);
+  }
+}
+
 
 * {
   font-family: var(--font-montserrat);
