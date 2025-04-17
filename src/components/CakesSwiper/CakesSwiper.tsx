@@ -1,4 +1,3 @@
-// components/CakeSlider.jsx
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import Cake from "../Cake/Cake";
