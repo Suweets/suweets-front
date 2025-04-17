@@ -37,7 +37,7 @@ export default function CakesSwiper() {
         navigation={true}
         modules={[Navigation]}
         className="mySwiper"
-        spaceBetween={30}
+        spaceBetween={0}
         slidesPerView={3}
         breakpoints={{
           640: { slidesPerView: 1.5 },

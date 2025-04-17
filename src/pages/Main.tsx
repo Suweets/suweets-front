@@ -2,8 +2,11 @@ import logo from "../assets/suweets-logo.svg";
 import Button from "../components/Button/Button";
 import heroImg from "../assets/heroImage.svg";
 import Divider from "../components/Divider/Divider";
-import { Minus } from "lucide-react";
-import CakeSwiper from "../components/CakesSwiper/CakesSwiper";
+import SwipeSection from "../components/SwipeSection/SwipeSection";
+import Flavors from "../components/Flavors/Flavors";
+import Pie from "../assets/tortaWhy.png";
+import Ingredients from "../assets/ingredientesWhy.png";
+import Bolo from "../assets/boloWhy.png";
 
 export default function Main() {
   return (
@@ -25,8 +28,8 @@ export default function Main() {
         </div>
       </header>
       <Divider />
-      <section className="mt-48 flex h-full w-full flex-col items-center justify-center">
-        <div className="flex h-full w-full flex-col items-center justify-start gap-10 px-[70px] text-center">
+      <section className="mt-48 mb-48 flex h-full w-full flex-col items-center justify-center">
+        <div className="flex h-full w-full flex-col items-center justify-between px-[70px] text-center">
           <div className="flex max-w-2xl flex-col items-center justify-center gap-15 text-center">
             <h1 className="text-chocolate-brown text-5xl font-bold">
               Destaques da Suweets
@@ -37,40 +40,83 @@ export default function Main() {
               seja uma comemoração especial ou um momento de puro prazer.
             </span>
           </div>
-          <div className="flex w-full flex-col items-center justify-center gap-20">
-            <div className="flex h-screen w-full flex-col gap-30">
-              <div className="flex w-full items-center justify-between">
-                <Button variant="primary">Visualizar Todos</Button>
-                <div className="text-chocolate-brown flex items-center gap-2">
-                  <Minus className="text-chocolate-brown" size={20} />
-                  <span className="text-chocolate-brown font-bold">
-                    Destaques
-                  </span>
-                </div>
-              </div>
-              <div>
-                <CakeSwiper />
-              </div>
+          <SwipeSection />
+          <section className="mt-40 flex w-full flex-col items-center justify-center gap-16 px-10">
+            <div className="flex max-w-2xl flex-col items-center justify-center gap-28 text-center">
+              <h1 className="text-chocolate-brown w-lg text-5xl font-bold">
+                Conheça todos os nossos sabores
+              </h1>
+              <span className="text-light-brown text-xl font-bold">
+                Explore nossa deliciosa variedade de sabores, feitos com
+                ingredientes selecionados e muito carinho. Dos clássicos aos
+                mais inovadores, cada mordida é uma experiência única. Escolha o
+                seu favorito e aproveite!
+              </span>
             </div>
-            <div className="flex h-full w-full flex-col gap-30">
-              <div className="flex w-full items-center justify-between">
-                <Button variant="primary">Visualizar Todos</Button>
-                <div className="text-chocolate-brown flex items-center gap-2">
-                  <Minus className="text-chocolate-brown" size={20} />
-                  <span className="text-chocolate-brown font-bold">
-                    Novos Sabores
-                  </span>
-                </div>
-              </div>
-              <div>
-                <CakeSwiper />
-              </div>
+            <div className="flex w-11/12 items-center justify-between">
+              <Flavors image="fatias" title="Fatias" />
+              <Flavors image="bolo" title="Bolos" />
+              <Flavors image="torta" title="Tortas" />
+            </div>
+          </section>
+        </div>
+      </section>
+      <Divider />
+      <section className="flex h-full w-full flex-col items-center justify-center px-10">
+        <div className="flex max-w-2xl flex-col items-center justify-center gap-28 text-center">
+          <h1 className="text-chocolate-brown w-lg text-5xl font-bold">
+            Por que escolher a Suweets?
+          </h1>
+          <span className="text-light-brown text-xl font-bold">
+            Na Suweets, cada doce é feito com dedicação e ingredientes
+            selecionados para garantir sabor, qualidade e uma experiência única.
+            Mais do que bolos, criamos momentos especiais que adoçam a sua vida!
+          </span>
+        </div>
+        <div className="mt-32 flex w-full flex-col items-center justify-between gap-[119px] px-[70px]">
+          <div className="flex w-full justify-between">
+            <img src={Pie} alt="" className="rounded-[500px]" />
+            <div className="flex flex-col items-end justify-end gap-5 text-right">
+              <h1 className="text-chocolate-brown w-lg text-5xl font-extrabold">
+                Além do que você imagina
+              </h1>
+              <span className="text-light-brown w-2xl text-xl font-bold">
+                A Suweets oferece bolos artesanais e tortas irresistíveis,
+                feitas com ingredientes selecionados. De bolos clássicos a
+                tortas recheadas, cada doce é preparado com carinho para tornar
+                seus momentos ainda mais especiais!{" "}
+              </span>
+            </div>
+          </div>
+          <div className="flex w-full justify-between">
+            <div className="flex flex-col items-start justify-end gap-5 text-left">
+              <h1 className="text-chocolate-brown w-lg text-5xl font-extrabold">
+                Ingredientes selecionados
+              </h1>
+              <span className="text-light-brown w-2xl text-xl font-bold">
+                Usamos apenas os melhores ingredientes, selecionados com
+                cuidado, para garantir o máximo de sabor, frescor e qualidade em
+                cada bolo. Nosso compromisso é oferecer experiências
+                irresistíveis em cada mordida!
+              </span>
+            </div>
+            <img src={Ingredients} alt="" className="rounded-[500px]" />
+          </div>
+          <div className="flex w-full justify-between">
+            <img src={Bolo} alt="" className="rounded-[500px]" />
+            <div className="flex flex-col items-end justify-end gap-5 text-right">
+              <h1 className="text-chocolate-brown w-lg text-5xl font-extrabold">
+                Feito com amor
+              </h1>
+              <span className="text-light-brown w-2xl text-xl font-bold">
+                Cada bolo e torta é preparado artesanalmente, com dedicação e
+                atenção a cada detalhe. Do preparo à finalização, garantimos
+                sabores autênticos e uma experiência única em cada mordida!
+              </span>
             </div>
           </div>
         </div>
       </section>
-      <Divider />
-      <section className="mt-48 flex h-full w-full flex-col items-center justify-center"></section>
     </div>
   );
 }
