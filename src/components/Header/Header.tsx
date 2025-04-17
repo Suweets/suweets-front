@@ -51,7 +51,7 @@ export default function Header() {
           <a href="#">Bolos Salgados</a>
         </div>
       </div>
-      <div className="bg-cream flex size-full flex-col">
+      <div className="bg-cream flex size-full flex-col overflow-x-hidden">
         <Outlet />
       </div>
     </div>
