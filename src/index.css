@@ -25,7 +25,7 @@ img{
 
   /* FONTES */
   --font-pacifico: "Pacifico", cursive;
-  --font-poppins: "Poppins", sans-serif;
+  --font-poppins: "Poppins",   sans-serif;
   --font-quicksand: "Quicksand", sans-serif;
   --font-montserrat: "Montserrat", sans-serif;
 
@@ -62,6 +62,7 @@ img{
   --background-heroGradient: linear-gradient(180deg, rgba(216, 138, 82, 0.47) 0%, rgba(195, 93, 46, 0.00) 97.6%);
   --shadow-buttonSecondary: 0px 4px 0px 0px #5E2C15;
   --shadow-cakeShadow: 0px 7px 0px 0px #FFC194;
+  --shadow-grayShadow: 0px 3px 0px 0px var(--color-base-gray, #766A63);
 
 
 

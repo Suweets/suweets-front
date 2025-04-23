@@ -1,4 +1,5 @@
 import { tv, type VariantProps } from "tailwind-variants";
+import clsx from "clsx";
 
 const button = tv({
   variants: {
@@ -14,12 +15,20 @@ const button = tv({
   },
 });
 
+type NativeButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+
 type buttonVariants = VariantProps<typeof button>;
 
-interface ButtonProps extends buttonVariants {
+interface ButtonProps extends NativeButtonProps, buttonVariants {
   children: React.ReactNode;
+  className?: string;
 }
 
 export default function Button(props: ButtonProps) {
-  return <button className={button(props)}>{props.children}</button>;
+  const { className, children, ...variantProps } = props;
+  return (
+    <button className={clsx(button(variantProps), className)}>
+      {children}
+    </button>
+  );
 }
