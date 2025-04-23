@@ -25,11 +25,17 @@ export default function Header() {
             <div className="flex items-center gap-5">
               <UserCircle2 className="text-chocolate-brown" size={25} />
               <p className="text-chocolate-brown w-25 text-xs">
-                <Link to={"/login"} className="font-bold">
+                <Link
+                  to={"/login"}
+                  className="hover:text-light-brown font-bold"
+                >
                   Entre
                 </Link>{" "}
                 ou{" "}
-                <Link to={"/register"} className="font-bold">
+                <Link
+                  to={"/register"}
+                  className="hover:text-light-brown font-bold"
+                >
                   Cadastre
                 </Link>
               </p>
