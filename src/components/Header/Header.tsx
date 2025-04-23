@@ -7,7 +7,9 @@ export default function Header() {
     <div className="flex h-screen flex-col">
       <div className="fixed z-20 flex w-full flex-col items-center justify-center">
         <header className="bg-cream shadow-headerShadow relative flex w-[965px] items-center justify-between gap-4 rounded-b-4xl p-5">
-          <img src={suweets} alt="" />
+          <Link to={"/"}>
+            <img src={suweets} alt="" />
+          </Link>
           <div className="relative w-[60%] gap-2">
             <input
               type="text"
@@ -20,14 +22,17 @@ export default function Header() {
             />
           </div>
           <div className="flex items-center justify-between">
-            <div className="flex cursor-pointer items-center gap-5">
+            <div className="flex items-center gap-5">
               <UserCircle2 className="text-chocolate-brown" size={25} />
-              <Link
-                to={"register"}
-                className="text-chocolate-brown w-25 text-xs font-bold"
-              >
-                Entre ou cadastre-se
-              </Link>
+              <p className="text-chocolate-brown w-25 text-xs">
+                <Link to={"/login"} className="font-bold">
+                  Entre
+                </Link>{" "}
+                ou{" "}
+                <Link to={"/register"} className="font-bold">
+                  Cadastre
+                </Link>
+              </p>
             </div>
             <div className="flex items-center gap-5">
               <Headset
