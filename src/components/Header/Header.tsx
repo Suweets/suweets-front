@@ -1,5 +1,5 @@
 import { Headset, Search, ShoppingCart, UserCircle2 } from "lucide-react";
-import { Outlet } from "react-router";
+import { Link, Outlet } from "react-router";
 import suweets from "../../assets/SuweetsMini.svg";
 
 export default function Header() {
@@ -22,9 +22,12 @@ export default function Header() {
           <div className="flex items-center justify-between">
             <div className="flex cursor-pointer items-center gap-5">
               <UserCircle2 className="text-chocolate-brown" size={25} />
-              <span className="text-chocolate-brown w-25 text-xs font-bold">
+              <Link
+                to={"register"}
+                className="text-chocolate-brown w-25 text-xs font-bold"
+              >
                 Entre ou cadastre-se
-              </span>
+              </Link>
             </div>
             <div className="flex items-center gap-5">
               <Headset
