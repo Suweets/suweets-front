@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import Button from "../components/Button/Button";
 import FormInput from "../components/FormInput/FormInput";
 import strawberry from "../assets/strawberry.svg";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { createUser } from "../services/createUser";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -28,6 +28,7 @@ export default function Register() {
   } = useForm<userRegister>({
     resolver: zodResolver(registerUserSchema),
   });
+
 
   const userMutation = useMutation({
     mutationFn: createUser,

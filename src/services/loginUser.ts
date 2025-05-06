@@ -8,5 +8,5 @@ export const loginUser = async (userData: userLogin) => {
   );
 
   console.log(response.data);
-  return response.data.data;
+  return response.data;
 };

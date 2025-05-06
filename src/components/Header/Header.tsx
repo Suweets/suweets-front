@@ -1,8 +1,11 @@
 import { Headset, Search, ShoppingCart, UserCircle2 } from "lucide-react";
 import { Link, Outlet } from "react-router";
 import suweets from "../../assets/SuweetsMini.svg";
+import { useUser } from "../../contexts/userContext";
 
 export default function Header() {
+  const { user } = useUser();
+
   return (
     <div className="flex h-screen flex-col">
       <div className="fixed z-20 flex w-full flex-col items-center justify-center">
@@ -24,21 +27,27 @@ export default function Header() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-5">
               <UserCircle2 className="text-chocolate-brown" size={25} />
-              <p className="text-chocolate-brown w-25 text-xs">
-                <Link
-                  to={"/login"}
-                  className="hover:text-light-brown font-bold"
-                >
-                  Entre
-                </Link>{" "}
-                ou{" "}
-                <Link
-                  to={"/register"}
-                  className="hover:text-light-brown font-bold"
-                >
-                  Cadastre
-                </Link>
-              </p>
+              {!user ? (
+                <p className="text-chocolate-brown w-25 text-xs">
+                  <Link
+                    to={"/login"}
+                    className="hover:text-light-brown font-bold"
+                  >
+                    Entre
+                  </Link>{" "}
+                  ou{" "}
+                  <Link
+                    to={"/register"}
+                    className="hover:text-light-brown font-bold"
+                  >
+                    Cadastre
+                  </Link>
+                </p>
+              ) : (
+                <p className="text-chocolate-brown w-25 text-base">
+                  {user.nome}
+                </p>
+              )}
             </div>
             <div className="flex items-center gap-5">
               <Headset

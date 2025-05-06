@@ -8,8 +8,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { userLogin } from "../types/user";
 import { useMutation } from "@tanstack/react-query";
 import { loginUser } from "../services/loginUser";
+import { useUser } from "../contexts/userContext";
 
 export default function Login() {
+  const { user, setUser } = useUser();
+
   const loginUserSchema = z.object({
     email: z.string().email("Email inválido").min(1, "Email é obrigatório"),
     password: z.string().min(6, "Senha deve ter pelo menos 6 caracteres"),
@@ -23,7 +26,8 @@ export default function Login() {
     mutationFn: loginUser,
     onSuccess: (data) => {
       reset();
-      console.log("User logged in successfully:", data);
+      setUser(data?.userInfo[0]);
+      console.log("Usuario logado com sucesso, dados:", user);
     },
 
     onError: (error) => {
