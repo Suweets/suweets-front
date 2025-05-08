@@ -15,7 +15,7 @@ export default function Catalogo() {
 
   const filteredByCategory = fatias?.filter(
     (fatia: any) =>
-      fatia?.nome_fatia
+      fatia?.nome_produto
         .toLowerCase()
         .includes(selectedCategory.toLowerCase()) ||
       fatia?.recheio.toLowerCase().includes(selectedCategory.toLowerCase()),
@@ -23,13 +23,13 @@ export default function Catalogo() {
 
   const filteredFatias = filteredByCategory?.filter(
     (fatia: any) =>
-      fatia?.nome_fatia.toLowerCase().includes(searchFatia.toLowerCase()) ||
+      fatia?.nome_produto.toLowerCase().includes(searchFatia.toLowerCase()) ||
       fatia?.recheio.toLowerCase().includes(searchFatia.toLowerCase()),
   );
 
-  //   const handleCategoryChange = (category: string) => {
-  //     setSelectedCategory(category);
-  //   };
+  // const handleCategoryChange = (category: string) => {
+  //   setSelectedCategory(category);
+  // };
 
   return (
     <div className="bg-cream bg-hero-gradient flex h-screen flex-col px-[70px]">
@@ -130,7 +130,7 @@ export default function Catalogo() {
         </div>
         <div className="flex h-full w-4/5 flex-col justify-start gap-25">
           <div className="text-chocolate-brown flex w-full justify-between">
-            <span className="font-extralight">12 produtos encontrados</span>
+            <span className="font-extralight">{fatias.length} Fatias encontradas</span>
             <span className="bg-chocolate-brown text-cream rounded-3xl px-9 py-1.5 font-bold">
               Fatias
             </span>
@@ -148,7 +148,7 @@ export default function Catalogo() {
               filteredFatias?.map((fatias: any) => (
                 <Cake
                   key={fatias.id_fatia}
-                  nome={fatias.nome_fatia}
+                  nome={fatias.nome_produto}
                   descricao={fatias.recheio}
                   valor={fatias.valor}
                   isCatalog={true}
