@@ -23,16 +23,14 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, setUser, logout }}>
-      {children}
-    </UserContext.Provider>
+    <UserContext value={{ user, setUser, logout }}>{children}</UserContext>
   );
 };
 
 export const useUser = (): UserContextType => {
   const context = useContext(UserContext);
   if (!context) {
-    throw new Error("useUser deve ser usado dentro de um <UserProvider>");
+    throw new Error("useUser deve ser usado dentro de um <Use>");
   }
   return context;
 };
