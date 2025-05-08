@@ -27,11 +27,9 @@ export default function Catalogo() {
       fatia?.recheio.toLowerCase().includes(searchFatia.toLowerCase()),
   );
 
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
-  };
-
-  console.log("Selected category:", selectedCategory);
+  //   const handleCategoryChange = (category: string) => {
+  //     setSelectedCategory(category);
+  //   };
 
   return (
     <div className="bg-cream bg-hero-gradient flex h-screen flex-col px-[70px]">
