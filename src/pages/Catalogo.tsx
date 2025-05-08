@@ -1,7 +1,38 @@
+import { useQuery } from "@tanstack/react-query";
 import Cake from "../components/Cake/Cake";
 import FormInput from "../components/FormInput/FormInput";
+import { getFatias } from "../services/getFatias";
+import { useState } from "react";
 
 export default function Catalogo() {
+  const [searchFatia, setSearchFatia] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const { data: fatias, isLoading } = useQuery({
+    queryKey: ["fatias"],
+    queryFn: getFatias,
+  });
+
+  const filteredByCategory = fatias?.filter(
+    (fatia: any) =>
+      fatia?.nome_fatia
+        .toLowerCase()
+        .includes(selectedCategory.toLowerCase()) ||
+      fatia?.recheio.toLowerCase().includes(selectedCategory.toLowerCase()),
+  );
+
+  const filteredFatias = filteredByCategory?.filter(
+    (fatia: any) =>
+      fatia?.nome_fatia.toLowerCase().includes(searchFatia.toLowerCase()) ||
+      fatia?.recheio.toLowerCase().includes(searchFatia.toLowerCase()),
+  );
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+  };
+
+  console.log("Selected category:", selectedCategory);
+
   return (
     <div className="bg-cream bg-hero-gradient flex h-screen flex-col px-[70px]">
       <section className="mt-48 mb-48 flex h-full w-full items-start justify-between gap-28">
@@ -14,6 +45,7 @@ export default function Catalogo() {
               className="h-9 w-full"
               type="text"
               placeholder="Pesquisar..."
+              onChange={(e) => setSearchFatia(e.target.value)}
             />
           </div>
           <div className="bg-light-cream shadow-grayShadow border-base-gray flex h-full w-full flex-col items-start justify-between gap-3 rounded-2xl border py-12 pr-24 pl-7">
@@ -110,14 +142,21 @@ export default function Catalogo() {
             </span>
           </div>
           <div className="grid grid-cols-3 grid-rows-5 gap-30">
-            {Array.from({ length: 10 }).map((_, index) => (
-              <div
-                key={index}
-                className="flex h-full w-full items-center justify-center"
-              >
-                <Cake isCatalog />
+            {isLoading ? (
+              <div className="flex w-full items-center justify-center">
+                <p className="text-chocolate-brown font-bold">Carregando...</p>
               </div>
-            ))}
+            ) : (
+              filteredFatias?.map((fatias: any) => (
+                <Cake
+                  key={fatias.id_fatia}
+                  nome={fatias.nome_fatia}
+                  descricao={fatias.recheio}
+                  valor={fatias.valor}
+                  isCatalog={true}
+                />
+              ))
+            )}
           </div>
         </div>
       </section>
