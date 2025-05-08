@@ -7,6 +7,7 @@ import Flavors from "../components/Flavors/Flavors";
 import Pie from "../assets/tortaWhy.png";
 import Ingredients from "../assets/ingredientesWhy.png";
 import Bolo from "../assets/boloWhy.png";
+import { Link } from "react-router";
 
 export default function Main() {
   return (
@@ -20,8 +21,17 @@ export default function Main() {
               qualquer momento!
             </span>
             <div className="flex w-full gap-5">
-              <Button>Faça seu pedido</Button>
-              <Button variant="secondary">Ver catálogo</Button>
+              <Link
+                to={"/catalogo"}
+                className="bg-terracota shadow-buttonShadow text-cream cursor-pointer rounded-2xl p-3 font-bold transition-colors hover:bg-[#d86a42] active:scale-95 active:shadow-none"
+              >
+                Faça seu pedido
+              </Link>
+              <Button variant="secondary">
+                <Link to={"/catalogo"} className="">
+                  Ver catálogo
+                </Link>
+              </Button>
             </div>
           </div>
           <img src={heroImg} alt="" className="animate-float" />

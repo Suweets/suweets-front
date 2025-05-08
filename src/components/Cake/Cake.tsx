@@ -1,6 +1,11 @@
+import { Plus } from "lucide-react";
 import chocolate_cake from "../../assets/cake4 2.svg";
 
-export default function Cake() {
+interface CakeProps {
+  isCatalog?: boolean;
+}
+
+export default function Cake({ isCatalog }: CakeProps) {
   return (
     <>
       <div className="bg-caramel shadow-cakeShadow relative z-50 flex h-fit w-80 flex-col items-center justify-center gap-2 rounded-4xl">
@@ -19,6 +24,18 @@ export default function Cake() {
         >
           <span className="text-chocolate-brown font-bold">R$ 24,90</span>
         </div>
+        {isCatalog && (
+          <div
+            className="bg-light-cream border-caramel shadow-cakeShadow absolute bottom-0 left-0 flex h-16 w-20 translate-y-9 items-center justify-center border-10 text-center"
+            style={{ borderRadius: "0px 100px 35px 50px" }}
+          >
+            <span className="text-chocolate-brown flex items-center justify-center text-center">
+              <button className="cursor-pointer">
+                <Plus />
+              </button>
+            </span>
+          </div>
+        )}
       </div>
     </>
   );

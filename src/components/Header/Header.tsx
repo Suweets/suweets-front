@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <div className="flex h-screen flex-col">
-      <div className="fixed z-20 flex w-full flex-col items-center justify-center">
+      <div className="fixed z-[50000] flex w-full flex-col items-center justify-center">
         <header className="bg-cream shadow-headerShadow relative flex w-[965px] items-center justify-between gap-4 rounded-b-4xl p-5">
           <Link to={"/"}>
             <img src={suweets} alt="" />
