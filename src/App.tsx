@@ -1,7 +1,16 @@
-export default function App() {
+import router from "./router/router";
+import { RouterProvider } from "react-router";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { UserProvider } from "./contexts/userContext";
+
+const queryClient = new QueryClient();
+
+export function App() {
   return (
-    <div className="flex justify-center items-center bg-blue-500 h-screen">
-      <p>Hello World</p>
-    </div>
+    <UserProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </UserProvider>
   );
 }
