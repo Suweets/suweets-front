@@ -6,12 +6,21 @@ interface CakeProps {
   descricao?: string;
   valor?: string;
   isCatalog?: boolean;
+  className?: string;
 }
 
-export default function Cake({ isCatalog, nome, descricao, valor }: CakeProps) {
+export default function Cake({
+  isCatalog,
+  nome,
+  descricao,
+  valor,
+  className = "",
+}: CakeProps) {
   return (
     <>
-      <div className="bg-caramel shadow-cakeShadow relative z-50 flex h-fit w-80 flex-col items-center justify-center gap-2 rounded-4xl">
+      <div
+        className={`bg-caramel shadow-cakeShadow relative z-50 flex h-fit w-80 flex-col items-center justify-center gap-2 rounded-4xl ${className}`}
+      >
         <img src={chocolate_cake} alt="" className="-translate-y-15" />
         <div className="flex h-full w-56 -translate-y-14 flex-col justify-start">
           <h1 className="text-light-cream text-xl font-bold">
