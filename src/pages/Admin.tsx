@@ -4,7 +4,7 @@ import Select from "react-select";
 import { z } from "zod";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { toast } from "sonner";
-import FormInput from "../components/FormInput/FormInput";
+import FormInput from "../components/FormInput/FormInput"; // Presumo que você estilizará este componente
 import { postFatias } from "../services/postFatias";
 import { getFatias } from "../services/getFatias";
 import Cake from "../components/Cake/Cake";
@@ -34,8 +34,15 @@ const ingredientesOptions = [
   { label: "Milho", value: "Milho" },
 ];
 
+interface FatiaType {
+  id_fatia: string | number;
+  nome_fatia: string;
+  recheio: string;
+  valor: number;
+}
+
 export default function Admin() {
-  const { data: fatias, isLoading } = useQuery({
+  const { data: fatias, isLoading } = useQuery<FatiaType[]>({
     queryKey: ["fatias"],
     queryFn: getFatias,
   });
@@ -90,126 +97,142 @@ export default function Admin() {
   };
 
   return (
-    <div className="bg-cream flex h-screen flex-col px-[70px]">
-      <section className="mt-48 mb-48 flex h-full w-full items-start justify-between gap-28">
-        <div className="flex w-1/2 items-center justify-center">
+    <div className="bg-cream flex flex-col px-8 py-24 md:px-16 lg:px-24">
+      <section className="flex flex-1 flex-col items-start justify-center gap-10 lg:flex-row lg:gap-16">
+        <div className="flex w-full items-center justify-center lg:w-3/5 xl:w-1/2">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="bg-cream shadow-grayShadow border-base-gray relative mt-20 flex h-fit w-[700px] flex-col items-center rounded-3xl border-2 px-14 py-3"
+            className="bg-cream shadow-grayShadow border-base-gray w-full max-w-[700px] rounded-3xl border-2 p-8 sm:p-10"
           >
-            <p className="text-chocolate-brown mb-4 text-xl font-bold">
+            <p className="text-chocolate-brown mb-6 text-center text-2xl font-bold">
+              {" "}
               Registre uma fatia
             </p>
-            <div className="mt-6 mb-10 flex h-full w-full items-start justify-between gap-24">
-              <div className="flex h-full w-1/2 flex-col gap-4">
-                <FormInput label="Nome *" {...register("nome")} />
-                {errors.nome && (
-                  <span className="text-xs text-red-500">
-                    {errors.nome.message}
-                  </span>
-                )}
-
-                <FormInput label="Massa *" {...register("massa")} />
-                {errors.massa && (
-                  <span className="text-xs text-red-500">
-                    {errors.massa.message}
-                  </span>
-                )}
-
-                <FormInput label="Recheio *" {...register("recheio")} />
-                {errors.recheio && (
-                  <span className="text-xs text-red-500">
-                    {errors.recheio.message}
-                  </span>
-                )}
-
-                <FormInput label="Cobertura *" {...register("cobertura")} />
-                {errors.cobertura && (
-                  <span className="text-xs text-red-500">
-                    {errors.cobertura.message}
-                  </span>
-                )}
-              </div>
-
-              <div className="flex h-full w-1/2 flex-col gap-4">
-                <FormInput
-                  label="Peso (g) *"
-                  type="number"
-                  {...register("peso_g")}
-                />
-                {errors.peso_g && (
-                  <span className="text-xs text-red-500">
-                    {errors.peso_g.message}
-                  </span>
-                )}
-
-                <FormInput
-                  label="Valor (R$) *"
-                  type="number"
-                  step="0.01"
-                  {...register("valor")}
-                />
-                {errors.valor && (
-                  <span className="text-xs text-red-500">
-                    {errors.valor.message}
-                  </span>
-                )}
-
-                <label className="text-chocolate-brown text-sm font-semibold">
-                  Ingredientes *
-                </label>
-                <Controller
-                  control={control}
-                  name="ingredientes"
-                  render={({ field }) => (
-                    <Select
-                      isMulti
-                      options={ingredientesOptions}
-                      value={field.value}
-                      onChange={field.onChange}
-                      className="text-sm"
-                      placeholder="Selecione os ingredientes"
-                    />
+            <div className="mb-8 flex flex-col gap-6 md:flex-row md:gap-12">
+              <div className="flex w-full flex-col gap-4 md:w-1/2">
+                <div>
+                  <FormInput label="Nome *" {...register("nome")} />
+                  {errors.nome && (
+                    <span className="mt-1 block text-xs text-red-500">
+                      {errors.nome.message}
+                    </span>
                   )}
-                />
-                {errors.ingredientes && (
-                  <span className="text-xs text-red-500">
-                    {errors.ingredientes.message}
-                  </span>
-                )}
+                </div>
+                <div>
+                  <FormInput label="Massa *" {...register("massa")} />
+                  {errors.massa && (
+                    <span className="mt-1 block text-xs text-red-500">
+                      {errors.massa.message}
+                    </span>
+                  )}
+                </div>
+                <div>
+                  <FormInput label="Recheio *" {...register("recheio")} />
+                  {errors.recheio && (
+                    <span className="mt-1 block text-xs text-red-500">
+                      {errors.recheio.message}
+                    </span>
+                  )}
+                </div>
+                <div>
+                  <FormInput label="Cobertura *" {...register("cobertura")} />
+                  {errors.cobertura && (
+                    <span className="mt-1 block text-xs text-red-500">
+                      {errors.cobertura.message}
+                    </span>
+                  )}
+                </div>
+              </div>
+              <div className="flex w-full flex-col gap-4 md:w-1/2">
+                <div>
+                  <FormInput
+                    label="Peso (g) *"
+                    type="number"
+                    {...register("peso_g")}
+                  />
+                  {errors.peso_g && (
+                    <span className="mt-1 block text-xs text-red-500">
+                      {errors.peso_g.message}
+                    </span>
+                  )}
+                </div>
+                <div>
+                  <FormInput
+                    label="Valor (R$) *"
+                    type="number"
+                    step="0.01"
+                    {...register("valor")}
+                  />
+                  {errors.valor && (
+                    <span className="mt-1 block text-xs text-red-500">
+                      {errors.valor.message}
+                    </span>
+                  )}
+                </div>
+                <div>
+                  <label className="text-chocolate-brown mb-1 block text-sm font-semibold">
+                    Ingredientes *
+                  </label>
+                  <Controller
+                    control={control}
+                    name="ingredientes"
+                    render={({ field }) => (
+                      <Select
+                        isMulti
+                        options={ingredientesOptions}
+                        value={field.value}
+                        onChange={field.onChange}
+                        className="react-select-container text-sm"
+                        classNamePrefix="react-select"
+                        placeholder="Selecione os ingredientes"
+                      />
+                    )}
+                  />
+                  {errors.ingredientes && (
+                    <span className="mt-1 block text-xs text-red-500">
+                      {errors.ingredientes.message}
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
 
             <button
               type="submit"
               disabled={mutation.isPending}
-              className="bg-chocolate-brown hover:bg-opacity-90 mt-4 rounded-full px-6 py-2 text-sm text-white transition disabled:opacity-70"
+              className="bg-chocolate-brown hover:bg-opacity-80 focus:ring-terracota w-full rounded-xl px-6 py-3 text-base font-semibold text-white transition hover:scale-[1.02] focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:opacity-70 sm:w-auto sm:px-8"
             >
-              {mutation.isPending ? "Enviando..." : "Enviar"}
+              {mutation.isPending ? "Enviando..." : "Enviar Cadastro"}
             </button>
           </form>
         </div>
-        <div className="flex w-fit items-center justify-center">
-          <div className="w-full rounded-lg bg-white p-6 shadow-md">
-            <h2 className="text-chocolate-brown text-xl font-bold">
+        <div className="flex w-full justify-center lg:w-2/5 lg:justify-start xl:w-1/2">
+          <div className="w-full max-w-[700px] rounded-xl bg-white p-6 shadow-lg">
+            {" "}
+            <h2 className="text-chocolate-brown mb-4 text-xl font-bold">
               Fatias cadastradas
             </h2>
-            <div className="mt-4 grid max-h-190 grid-cols-2 overflow-y-auto">
+            <div className="mt-4 grid max-h-[60vh] grid-cols-1 gap-4 overflow-y-auto p-1 py-12 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2">
               {isLoading ? (
                 <p className="text-chocolate-brown text-sm font-light">
                   Carregando fatias...
                 </p>
-              ) : (
-                fatias?.map((fatias: any) => (
+              ) : fatias && fatias.length > 0 ? (
+                fatias.map((fatia) => (
                   <Cake
-                    key={fatias.id_fatia}
-                    nome={fatias.nome_fatia}
-                    descricao={fatias.recheio}
-                    valor={fatias.valor}
+                    key={fatia.id_fatia}
+                    nome={fatia.nome_fatia}
+                    descricao={fatia.recheio}
+                    valor={fatia.valor}
                     isCatalog={false}
-                    className="scale-65"
+                    className="scale-80"
+                    id={fatia.id_fatia}
                   />
                 ))
+              ) : (
+                <p className="text-chocolate-brown col-span-full text-center text-sm font-light">
+                  Nenhuma fatia cadastrada ainda.
+                </p>
               )}
             </div>
           </div>

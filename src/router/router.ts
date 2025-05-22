@@ -5,6 +5,8 @@ import Register from "../pages/Register.tsx";
 import Login from "../pages/Login.tsx";
 import Catalogo from "../pages/Catalogo.tsx";
 import Admin from "../pages/Admin.tsx";
+import CarrinhoPage from "../pages/Carrinho.tsx";
+import UserPage from "../pages/UserPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +17,8 @@ const router = createBrowserRouter([
       { path: "/login", Component: Login },
       { path: "/catalogo", Component: Catalogo },
       { path: "/admin", Component: Admin },
+      { path: "/carrinho", Component: CarrinhoPage },
+      { path: "/perfil", Component: UserPage },
     ],
   },
 ]);

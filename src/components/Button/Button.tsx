@@ -6,6 +6,8 @@ const button = tv({
     variant: {
       primary:
         "bg-terracota shadow-buttonShadow text-cream cursor-pointer rounded-2xl p-3 font-bold transition-colors hover:bg-[#d86a42] active:scale-95 active:shadow-none",
+      destructive:
+        "bg-pastel-red shadow-buttonShadow text-cream cursor-pointer rounded-2xl p-3 font-bold transition-colors hover:bg-[#e24d50] active:scale-95 active:shadow-none",
       secondary:
         "text-chocolate-brown hover:text-terracota cursor-pointer font-bold transition-colors ",
     },
@@ -21,11 +23,12 @@ type buttonVariants = VariantProps<typeof button>;
 
 interface ButtonProps extends NativeButtonProps, buttonVariants {
   children: React.ReactNode;
+  onClick?: () => void;
   className?: string;
 }
 
 export default function Button(props: ButtonProps) {
-  const { className, children, ...variantProps } = props;
+  const { className, children, onClick, ...variantProps } = props;
   return (
     <button className={clsx(button(variantProps), className)}>
       {children}

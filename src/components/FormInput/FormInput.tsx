@@ -6,10 +6,12 @@ type InputProps = InputHTMLAttributes<HTMLInputElement>;
 interface FormInputProps extends InputProps {
   label?: string;
   className?: string;
+  error?: string;
 }
 
 export default function FormInput({
   label,
+  error,
   className,
   ...props
 }: FormInputProps) {
