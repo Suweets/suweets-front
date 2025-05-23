@@ -2,17 +2,24 @@ import logo from "../assets/suweets-logo.svg";
 import Button from "../components/Button/Button";
 import heroImg from "../assets/heroImage.svg";
 import Divider from "../components/Divider/Divider";
-import SwipeSection from "../components/SwipeSection/SwipeSection";
 import Flavors from "../components/Flavors/Flavors";
 import Pie from "../assets/tortaWhy.png";
 import Ingredients from "../assets/ingredientesWhy.png";
 import Bolo from "../assets/boloWhy.png";
 import { Link } from "react-router";
+import FeaturedProductsCarousel from "../components/FeaturedProductsCarousel/FeaturedProductsCarousel";
+import { getFatias } from "@/services/getFatias";
+import { useQuery } from "@tanstack/react-query";
+import { FatiaType } from "@/types/fatias";
 
 export default function Main() {
+  const { data: fatias } = useQuery<FatiaType[]>({
+    queryKey: ["fatias"],
+    queryFn: getFatias,
+  });
   return (
     <div className="bg-cream flex flex-col">
-      <header className="bg-hero-gradient h-screen w-full items-center justify-center">
+      <header className="bg-hero-gradient w-full items-center justify-center">
         <div className="flex h-full w-full items-center justify-center gap-52 p-[70px]">
           <div className="ml-30 flex flex-col items-center gap-11 text-start">
             <img src={logo} alt="Logo" className="w-auto" />
@@ -50,8 +57,8 @@ export default function Main() {
               seja uma comemoração especial ou um momento de puro prazer.
             </span>
           </div>
-          <SwipeSection />
-          <section className="mt-40 flex w-full flex-col items-center justify-center gap-16 px-10">
+          <FeaturedProductsCarousel products={fatias ?? []} />
+          <section className="mt-48 flex w-full flex-col items-center justify-center gap-16 px-10">
             <div className="flex max-w-2xl flex-col items-center justify-center gap-28 text-center">
               <h1 className="text-chocolate-brown w-lg text-5xl font-bold">
                 Conheça todos os nossos sabores
@@ -72,7 +79,7 @@ export default function Main() {
         </div>
       </section>
       <Divider />
-      <section className="flex h-full w-full flex-col items-center justify-center px-10">
+      <section className="mt-48 flex h-full w-full flex-col items-center justify-center px-10">
         <div className="flex max-w-2xl flex-col items-center justify-center gap-28 text-center">
           <h1 className="text-chocolate-brown w-lg text-5xl font-bold">
             Por que escolher a Suweets?
@@ -112,7 +119,7 @@ export default function Main() {
             </div>
             <img src={Ingredients} alt="" className="rounded-[500px]" />
           </div>
-          <div className="flex w-full justify-between">
+          <div className="mb-20 flex w-full justify-between">
             <img src={Bolo} alt="" className="rounded-[500px]" />
             <div className="flex flex-col items-end justify-end gap-5 text-right">
               <h1 className="text-chocolate-brown w-lg text-5xl font-extrabold">
