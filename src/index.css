@@ -2,9 +2,7 @@
 
 @import 'swiper/css';
 @import 'swiper/css/navigation';
-
 @import "tailwindcss";
-
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -20,6 +18,28 @@ img{
   image-rendering: pixelated;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.swiper-slide {
+  overflow: visible !important;
+}
+
+.swiper-pagination {
+  position: static; 
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  width: 0.75rem; 
+  height: 0.75rem; 
+  background-color: var(--color-base-gray, #A0A0A0); 
+  opacity: 0.5;
+  margin: 0 0.25rem !important;
+  transition: opacity 0.3s, background-color 0.3s;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--color-chocolate-brown, #5E2C15); 
+  opacity: 1;
 }
 
 @theme {
@@ -50,6 +70,7 @@ img{
   --color-pastel-pink: #f4c2c2;
   --color-vanilla-yellow: #f9e2af;
   --color-base-gray: #766a63;
+  --color-pastel-red: #FF585B;
 
   /* BREAKPOINTS */
   --breakpoint-desktop: 1500px;
@@ -90,30 +111,6 @@ img{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
-}
-
-.swiper-button-next:after{
-  color: var(--color-light-brown, #766a63);
-  font-weight: 900;
-  font-size: 20px !important;
-  padding: 10px;
-  padding-inline:  15px;
-  border-radius: 100%;
-  background-color: var(--color-chocolate-brown );
-}
-
-.swiper-button-prev:after{
-  color: var(--color-light-brown, #766a63);
-  font-weight: 900;
-  font-size: 20px !important;
-  padding: 10px;
-  padding-inline:  15px;
-  border-radius: 100%;
-  background-color: var(--color-chocolate-brown );
-}
-
-.swiper{
-  overflow: visible;
 }
 
 @theme inline {

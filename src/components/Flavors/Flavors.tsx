@@ -2,6 +2,7 @@ import Button from "../Button/Button";
 import fatias from "../../assets/fatiasImg.png";
 import torta from "../../assets/torta.png";
 import bolo from "../../assets/bolo.png";
+import { Link } from "react-router";
 
 interface FlavorsProps {
   image: "fatias" | "torta" | "bolo";
@@ -25,7 +26,9 @@ export default function Flavors({ image, title }: FlavorsProps) {
         style={{ backgroundImage: `url(${imageSrc})` }}
       >
         <span className="text-5xl font-bold text-white">{title}</span>
-        <Button variant="primary">Saiba mais</Button>
+        <Button variant="primary">
+          <Link to={"/catalogo"}>Saiba mais</Link>
+        </Button>
       </div>
     </>
   );
