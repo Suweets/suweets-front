@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function Catalogo() {
   const [searchFatia, setSearchFatia] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory] = useState("");
 
   const { data: fatias, isLoading } = useQuery({
     queryKey: ["fatias"],
@@ -130,7 +130,9 @@ export default function Catalogo() {
         </div>
         <div className="flex h-full w-4/5 flex-col justify-start gap-25">
           <div className="text-chocolate-brown flex w-full justify-between">
-            <span className="font-extralight">{fatias.length} Fatias encontradas</span>
+            <span className="font-extralight">
+              {fatias.length} Fatias encontradas
+            </span>
             <span className="bg-chocolate-brown text-cream rounded-3xl px-9 py-1.5 font-bold">
               Fatias
             </span>
